@@ -1,11 +1,11 @@
 <?php 
 
 class Person {
-   $firstName;
+   /*$firstName;
    $lastName;
    $birthDate;
-   $gender;
-   public function __construct() {
+   $gender;*/
+   public function __construct( $firstName, $lastName, $birthDate, $gender ) {
       $this->firstName = $firstName;
       $this->lastName = $lastName;
       $this->birthDate = $birthDate;

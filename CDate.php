@@ -1,16 +1,16 @@
 <?php
-class Customer extends Person {
+class CDate {
    function __construct() {
       $super::__construct($fn,$ln,$bd,$g);
    }   
    function createTable() {
       global $db;
-      $db->query('CREATE TABLE IF NOT EXISTS customer(
+      $db->query('CREATE TABLE IF NOT EXISTS date(
          cust_id INT AUTO_INCREMENT PRIMARY KEY,
-         cust_fNname VARCHAR(50),
-         cust_lName VARCHAR(50),
-         cust_bDate DATE,
-         cust_gender VARCHAR(10)
+         cdat_custId INT NOT NULL,
+         cdat_EmplId INT NOT NULL,
+         cdat_date DATE,
+         cdat_service VARCHAR(10)
       )');
    }
    function add() {}
