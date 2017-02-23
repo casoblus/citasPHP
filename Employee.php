@@ -15,7 +15,21 @@ class Employee extends Person {
          empl_gender VARCHAR(10)
       )');
    }
-   function add() {}
+   function add() {
+      global $db;
+      $sqlRequest = 'INSERT INTO employee( 
+         empl_fName, empl_lName, empl_bDate, empl_gender ) 
+         VALUES(
+            \''.$this->firstName.'\'
+            ,'.$this->lastName.'\'
+            ,'.$this->birthdate.'\'
+            ,'.$this->gender.'\')';
+
+      if( $db->query( $sqlRequest ) === false ) {
+         return false;
+      }
+      return true;
+   }
    function get() {}
    function search(){}
 }

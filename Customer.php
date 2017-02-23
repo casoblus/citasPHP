@@ -13,7 +13,21 @@ class Customer extends Person {
          cust_gender VARCHAR(10)
       )');
    }
-   function add() {}
+   function add() {
+      global $db;
+      $sqlRequest = 'INSERT INTO customer( 
+         cust_fName, cust_lName, cust_bDate, cust_gender ) 
+         VALUES(
+            \''.$this->firstName.'\'
+            ,'.$this->lastName.'\'
+            ,'.$this->birthdate.'\'
+            ,'.$this->gender.'\')';
+
+      if( $db->query( $sqlRequest ) === false ) {
+         return false;
+      }
+      return true;
+   }
    function get() {}
    function search(){}
 }

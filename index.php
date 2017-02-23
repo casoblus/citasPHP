@@ -8,7 +8,7 @@ if ($db->connect_error) {
    exit();
 }
 
-$db->query( 'CREATE DATABASE IF NOT EXISTS '.$dbName );
+$this->$db->query( 'CREATE DATABASE IF NOT EXISTS '.$dbName );
 if ($db->error) {
    printf('Create failed: %s\r\n',$db->error);
    exit();
@@ -24,3 +24,4 @@ include 'Employee.php';
 
 Customer::createTable();
 Employee::createTable();
+
