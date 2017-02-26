@@ -28,6 +28,61 @@ class Customer extends Person {
       }
       return true;
    }
-   function get() {}
-   function search(){}
+   /**
+    * Recibe el id de la cita 
+    * Devuelve los datos de la cita si existe
+    */
+   function get( $recordId ) {
+      global $db;
+
+      $sqlRequest = 'SELECT * FROM customer WHERE cust_id '.$recordId; 
+      if( ( $sqlResult = $db->query( $sqlRequest ) ) === false ) {
+         return false;
+      }
+      return $sqlResult;
+   }
+   
+   
+   
+   
+   /**
+    * Obtiene lista de ids de citas que concuerden con 
+    * los parametros pasados como argumentos
+    */
+   function searchBy( $field, $condition, $value ){
+      switch ($condition) {
+         case 'contains':
+            $strWhere = $field.'=\'%'.$value.'%\'';
+            break;
+         case 'equals':
+            $strWhere = $field.'=\''.$value.'\'';
+            break;
+         case 'lessOrEquals':
+            $strWhere = $field.'<=\''.$value.'\'';
+            break;
+         case 'greatOrEquals':
+            $strWhere = $field.'>=\''.$value.'\'';
+            break;
+         case 'lessThan':
+            $strWhere = $field.'<\''.$value.'\'';
+            break;
+         case 'greatThan':
+            $strWhere = $field.'>\''.$value.'\'';
+            break;
+      }
+      $sqlRequest = 'SELECT cust_id FROM customer WHERE '.$strWhere; 
+      if( ( $sqlResult = $db->query( $sqlRequest ) ) === false ) {
+         return false;
+      }
+      return $sqlResult;
+   }
+
+
+   function __toString() {
+     $str = " 
+      $this->cust_id<br>
+      $this->empl_Id<br>
+      $this->dateOfService<br>
+      $this->service<br>";
+   }
 }

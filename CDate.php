@@ -1,6 +1,10 @@
 <?php
 class CDate {
-   function __construct() {
+   function __construct( $cid, $eid, $dos, $s ) {
+      $this->cust_Id = $cid;
+      $this->empl_Id = $eid;
+      $this->dateOfService = $dos;
+      $this->service = $s;
    }   
    function createTable() {
       global $db;
@@ -58,14 +62,31 @@ class CDate {
     * Obtiene lista de ids de citas que concuerden con 
     * los parametros pasados como argumentos
     */
-   function search( $conditions = 1 ){
-      if ( $conditions !== 1 ) { // si no es 1 es un array asociativo
-         $strConditions = '';
-         foreach( $conditions as $key => $value ) {
-            $strConditions += "$key='$value'";
-         }
-         $conditions = $strConditions;
+   function searchBy( $field, $condition, $value ) {
+      switch ($condition) {
+         case 'contains':
+            $strWhere = $field.'=\'%'.$value.'%\'';
+            break;
+         case 'equals':
+            $strWhere = $field.'=\''.$value.'\'';
+            break;
+         case 'lessOrEquals':
+            $strWhere = $field.'<=\''.$value.'\'';
+            break;
+         case 'greatOrEquals':
+            $strWhere = $field.'>=\''.$value.'\'';
+            break;
+         case 'lessThan':
+            $strWhere = $field.'<\''.$value.'\'';
+            break;
+         case 'greatThan':
+            $strWhere = $field.'>\''.$value.'\'';
+            break;
       }
-
+      $sqlRequest = 'SELECT cdat_Id FROM date WHERE '.$strWhere; 
+      if( ( $sqlResult = $db->query( $sqlRequest ) ) === false ) {
+         return false;
+      }
+      return $sqlResult;
    }
 }
