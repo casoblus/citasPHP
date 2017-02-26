@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>Formulario de búsqueda</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+   </head>
+   
+   <body>
+      <div class="container">
+         <form class="col-xs-6" action="" method="post"> 
+            <h3>Buscar:</h3>
+            <div class="container">
+         <div class="form-group">
+            <label for="tipo">Tipo: </label>
+            <select  class="form-control" name="tipo" id="tipo">
+               <option value="Customer">Cliente</option>
+               <option value="Empleado">Empleado</option>
+            </select>
+         </div>
+         <div class="form-group">
+            <label for="campo">Campo: </label>
+            <select  class="form-control" name="campo" id="campo1">
+               <option value="fName">Nombre</option>
+               <option value="lName">Apellidos</option>
+               <option value="gender">Sexo</option>
+               <option value="birthDate">Fecha de nacimiento</option>
+               <option value="id">id</option>
+            </select>
+         </div>
+         <div class="form-group">
+            <label for="condicion">es </label>
+            <select  class="form-control" name="condicion" id="condicion">
+               <option value="igual">igual que</option>
+               <option value="mayor">mayor que</option>
+               <option value="menor">menor que</option>
+               <option value="menoroigual">menor o igual que</option>
+               <option value="mayoroigual">mayor o igual que</option>
+               <option value="contiene">contiene</option>
+            </select>
+         </div>
+         <div class="form-group">
+            <label for="valor">valor: </label>
+            <input class="form-control" id="valor" type="text" name="campo2">
+         </div>
+         <div>
+            <input class="btn btn-primary btn-lg" type="submit" name="boton1" value="Buscar">
+         </div>
+      </form>
+         </div>
+         </div>
+   </body>
+</html>
